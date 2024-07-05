@@ -69,7 +69,7 @@
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [43.6532, 79.3832],
+        center: [-79.39390704282365, 43.70777081498133],
         zoom: 11.5
       });
 
@@ -80,15 +80,13 @@
       const urlBase = 'https://api.mapbox.com/isochrone/v1/mapbox/';
       let profile = 'cycling';
       let minutes = 10;
-      let lon = -77.034;
-      let lat = 38.899;
+      let lon = -79.39390704282365;
+      let lat = 43.70777081498133;
       const marker = new mapboxgl.Marker({ 'color': '#314ccd' });
 
-      async function getIso() {
-        const query = await fetch(`${urlBase}${profile}/${lon},${lat}?contours_minutes=${minutes}&polygons=true&access_token=${mapboxgl.accessToken}`, { method: 'GET' });
-        const data = await query.json();
-        map.getSource('iso').setData(data);
       }
+
+     
 
       params.addEventListener('change', (event) => {
         if (event.target.name === 'profile') {
